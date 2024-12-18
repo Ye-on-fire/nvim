@@ -16,3 +16,5 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 keymap.set("n", "<S-L>", ":bnext<CR>")
 keymap.set("n", "<S-H>", ":bprevious<CR>")
+keymap.set("n", "<leader>to", "<cmd>lua vim.diagnostic.enable()<cr>")
+keymap.set("n", "<leader>tf", "<cmd>lua vim.diagnostic.disable()<cr>")

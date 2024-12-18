@@ -51,12 +51,6 @@ require("lazy").setup({
     },
   },
   {
-    {
-      "williamboman/mason.nvim",
-      lazy = false,
-      opts = {},
-    },
-
     -- Autocompletion
     {
       "hrsh7th/nvim-cmp",
@@ -85,12 +79,10 @@ require("lazy").setup({
     -- LSP
     {
       "neovim/nvim-lspconfig",
-      cmd = { "LspInfo", "LspInstall", "LspStart" },
+      cmd = "LspInfo",
       event = { "BufReadPre", "BufNewFile" },
       dependencies = {
         { "hrsh7th/cmp-nvim-lsp" },
-        { "williamboman/mason.nvim" },
-        { "williamboman/mason-lspconfig.nvim" },
       },
       init = function()
         -- Reserve a space in the gutter
@@ -125,16 +117,18 @@ require("lazy").setup({
           end,
         })
 
-        require("mason-lspconfig").setup({
-          ensure_installed = {},
-          handlers = {
-            -- this first function is the "default handler"
-            -- it applies to every language server without a "custom handler"
-            function(server_name)
-              require("lspconfig")[server_name].setup({})
-            end,
+        -- These are just examples. Replace them with the language
+        -- servers you have installed in your system
+        require("lspconfig").basedpyright.setup({
+          settings = {
+            useLibraryCodeForTypes = false,
+            python = {
+              pythonPath = vim.fn.exepath("python3"),
+            },
           },
         })
+        require("lspconfig").lua_ls.setup({})
+        require("lspconfig").clangd.setup({})
       end,
     },
   },

@@ -55,18 +55,11 @@ return {
     opts = {
       ensure_installed = {
         "basedpyright",
-        "pyright",
+        -- "pyright",
         "debugpy",
         "ruff",
+        "clangd",
       },
     },
   },
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   config = function()
-  --     local lspconfig = require("lspconfig")
-  --
-  --     lspconfig.pyright.setup()
-  --   end,
-  -- },
 }
